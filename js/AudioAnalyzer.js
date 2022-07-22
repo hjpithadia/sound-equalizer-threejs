@@ -48,7 +48,7 @@ AudioAnalyzer.prototype.init = function(_stream){
 
   this.reset_history();
   
-  this.buffer_length =  Math.floor(this.analyzer.frequencyBinCount * 0.2);
+  this.buffer_length =  Math.floor(this.analyzer.frequencyBinCount * 0.4);
   this.audio_buffer = new Uint8Array(this.buffer_length);
 
   console.log("audio analyzer is init");
@@ -59,7 +59,7 @@ AudioAnalyzer.prototype.init = function(_stream){
 AudioAnalyzer.prototype.init_without_stream = function(){
   alert("microphone is not detected. pulse is activated instead of mic input");
 
-  this.bass = 0.9;
+  this.bass = 0.7;
   this.mid = 0.3;
   this.high = 0.;
   this.level = 0.;
@@ -76,7 +76,7 @@ AudioAnalyzer.prototype.init_without_stream = function(){
 
 AudioAnalyzer.prototype.update = function(){   
   if(this.is_init){
-      var _bass = 0.9, _mid = 0.7, _high = 0.3;
+      var _bass = 0.7 , _mid = 0.7, _high = 0.3;
       // console.log(this.bass);
 
       if(!this.is_pulse){
