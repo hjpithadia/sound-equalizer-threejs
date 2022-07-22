@@ -48,7 +48,7 @@ AudioAnalyzer.prototype.init = function(_stream){
 
   this.reset_history();
   
-  this.buffer_length =  Math.floor(this.analyzer.frequencyBinCount * 0.5);
+  this.buffer_length =  Math.floor(this.analyzer.frequencyBinCount * 0.2);
   this.audio_buffer = new Uint8Array(this.buffer_length);
 
   console.log("audio analyzer is init");
@@ -76,7 +76,7 @@ AudioAnalyzer.prototype.init_without_stream = function(){
 
 AudioAnalyzer.prototype.update = function(){   
   if(this.is_init){
-      var _bass = 0.5, _mid = 0.7, _high = 0.3;
+      var _bass = 0.9, _mid = 0.7, _high = 0.3;
       // console.log(this.bass);
 
       if(!this.is_pulse){
