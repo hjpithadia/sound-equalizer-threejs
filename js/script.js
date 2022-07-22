@@ -58,7 +58,7 @@ var update = function(){
 
     // update pbr
     m_pbr.exposure = 5. 
-        + 30. * m_analyzer.get_level();
+        + 10. * m_analyzer.get_level();
 
     // update light
     // if(m_ctrl.params.light_ziggle) 

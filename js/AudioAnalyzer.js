@@ -32,12 +32,12 @@ AudioAnalyzer.prototype.init = function(_stream){
 
   // https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode
   this.analyzer = _ctx.createAnalyser();
-  this.analyzer.fftSize = 128;
+  this.analyzer.fftSize = 256;
 
   this.gain = _ctx.createGain();
   _source.connect(this.gain);
   this.gain.connect(this.analyzer);
-  this.gain.gain.value = 70.;
+  this.gain.gain.value = 30.;
 
   this.bass = 0.;
   this.mid = 0.;
@@ -48,7 +48,7 @@ AudioAnalyzer.prototype.init = function(_stream){
 
   this.reset_history();
   
-  this.buffer_length = this.analyzer.frequencyBinCount;
+  this.buffer_length =  Math.floor(this.analyzer.frequencyBinCount * 0.8);
   this.audio_buffer = new Uint8Array(this.buffer_length);
 
   console.log("audio analyzer is init");
@@ -59,8 +59,8 @@ AudioAnalyzer.prototype.init = function(_stream){
 AudioAnalyzer.prototype.init_without_stream = function(){
   alert("microphone is not detected. pulse is activated instead of mic input");
 
-  this.bass = 0.;
-  this.mid = 0.;
+  this.bass = 0.9;
+  this.mid = 0.3;
   this.high = 0.;
   this.level = 0.;
 
@@ -76,7 +76,8 @@ AudioAnalyzer.prototype.init_without_stream = function(){
 
 AudioAnalyzer.prototype.update = function(){   
   if(this.is_init){
-      var _bass = 0., _mid = 0., _high = 0.;
+      var _bass = 0.3, _mid = 0.7, _high = 0.3;
+      // console.log(this.bass);
 
       if(!this.is_pulse){
           this.analyzer.getByteFrequencyData(this.audio_buffer);
@@ -173,7 +174,7 @@ AudioAnalyzer.prototype.debug = function(_canvas){
   _x += _w;
 
   _h = this.mid * _canvas.height;
-  _ctx.fillStyle = 'rgb(0,200,0)';
+  _ctx.fillStyle = 'rgb(0,220,0)';
   _ctx.fillRect(_x,_canvas.height-_h,_w,_h);
   _x += _w;
 
