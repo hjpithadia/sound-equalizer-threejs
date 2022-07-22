@@ -6,7 +6,7 @@ var Ctrl = function(_blob, _light, _pbr, _audio){
 		debug_shadow_map: false,
 		cam_ziggle: true,
 		light_ziggle: true,
-		audio_gain: 70.
+		audio_gain: 10.
 	}
 	
 	// var _g_blob = new dat.GUI();
